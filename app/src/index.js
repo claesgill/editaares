@@ -12,7 +12,7 @@ ReactDOM.render(
     <Router>
         <div className="App">
             {/* <Navigation /> */}
-            <h1>Editåre</h1>
+            {/* <h1>Welcome to Editåre</h1> */}
             <Routes />
         </div>
     </Router>,

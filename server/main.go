@@ -7,6 +7,7 @@ import (
 	"net/http"
 	"log"
 	"encoding/json"
+	"os/exec"
 )
 
 const message = "Hello World"
@@ -41,10 +42,16 @@ func postURL(w http.ResponseWriter, r *http.Request){
 	if valid {
 		w.Write([]byte("{\"valid\": true}"))
 	} else {
-		w.Write([]byte("{\"valid\": false, \"msg\": User/repo does not exist or repo might be private}"))
+		w.Write([]byte("{\"valid\": false, \"msg\": Repo '" + link.URL + "' does not exist or repo might be private}"))
 	}
 
 	// TODO: Make OS call to docker and run a docker container
+	if valid {
+		cmd := exec.Command("docker", "run", "-di", "react:1")
+		output, err := cmd.Output()
+		if err != nil {}
+		fmt.Println(string(output))
+	}
 }
 
 func checkValidRepo(url string)(bool){
